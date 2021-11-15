@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background: #020203;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  height: 91px;
+}
+
+nav a:link, nav a:visited, nav a:hover, nav a:active {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+}
+nav ul li {
+  cursor: pointer;
+}
+
+.logo {
+  width: 178px;
+  height: 61px;
+}
+
+.sideMenu {
+  background: #020203;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 117px;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 12px;
+  padding-top: 4rem;
+  position: absolute;
+  left: 0;
+  height: 100%;
+}
+
+.sideMenu img {
+  width: 64px;
+  height: 64px;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.copyright {
+  transform: rotate(-90deg);
+  margin-top: 6rem;
+  width: max-content;
+  position: absolute;
+  bottom: 16rem;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  margin-left: 6rem;
+  justify-content: center;
+}
+.mainContainer {
+  padding-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mainContainer .left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 835px;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mainTop {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+}
+.mainTop h1 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.mainTop h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.barChartActivity {
+  display: flex;
+  flex-direction: column;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  width: 835px;
+  height: 320px;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+.barChartActivity h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #20253a;
+}
+
+.barChartActivity .legend {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.barChartActivity .legend-right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  right: 1rem;
+}
+
+.lineChartSession {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  border-radius: 5px;
+  width: 258px;
+  height: 263px;
+}
+.cardKeyInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: #fbfbfb;
+  width: 258px;
+  height: 124px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.cardKeyInfo img {
+  width: 60px;
+  height: 60px;
+}
+.cardKeyInfo .imgSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardKeyInfo h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cardKeyInfo h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cardsKeysInfos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.radarChartActivityType {
+  display: flex;
+  flex-direction: column;
+  background-color: #282d30;
+  border-radius: 5px;
+  width: 258px;
+  height: 263px;
+}
+
+.radialBarChartScore {
+  display: flex;
+  flex-direction: column;
+  width: 258px;
+  height: 263px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+
+.mainContent{
+  display: flex;
+  flex-direction:column;
+  margin: "auto"; 
+  width: "1157px";
+}
+
+@media (max-width:1300px) {
+  .cardsKeysInfos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 835px;
+    margin-top: 0;
+  }
+  .cardKeyInfo {
+    margin: 0.6rem;
+    width: 189px;
+  }
+  .mainContent{
+    width: 880px;
+  }
+}
