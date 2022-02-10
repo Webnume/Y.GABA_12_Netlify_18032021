@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/user/";
+// const baseURL = "http://localhost:3000/user/";
+
+const baseURL = "https://calm-gorge-80201.herokuapp.com/user/";
 
 let currentUser;
 
