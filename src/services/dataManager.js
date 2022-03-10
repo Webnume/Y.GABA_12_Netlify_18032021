@@ -1,8 +1,11 @@
 import axios from "axios";
 
-// const baseURL = "http://localhost:3000/user/";
+import * as mockedData from "./mockedData";
 
-const baseURL = "https://calm-gorge-80201.herokuapp.com/user/";
+const useMockedData = true; // if mocked data set to true
+
+const baseURL = "http://localhost:3000/user/";
+// const baseURL = "https://calm-gorge-80201.herokuapp.com/user/";
 
 let currentUser;
 
@@ -14,18 +17,61 @@ function setCurrentUser(value) {
   currentUser = value;
 }
 
+const getMockedUserById = (id) => {
+  return mockedData.USER_MAIN_DATA.find((user) => user.id === id);
+};
+
+/**
+ * @param {number} id
+ */
+const getMockedUserActivityById = (id) => {
+  return mockedData.USER_ACTIVITY.find(
+    (userActivity) => userActivity.userId === id
+  );
+};
+
+/**
+ * @param {number} id
+ */
+const getMockedUserAverageSession = (id) => {
+  return mockedData.USER_AVERAGE_SESSIONS.find(
+    (userActivity) => userActivity.userId === id
+  );
+};
+
+/**
+ * @param {number} id
+ */
+const getMockedUserPerformance = (id) => {
+  return mockedData.USER_PERFORMANCE.find(
+    (userPerformance) => userPerformance.userId === id
+  );
+};
+
+async function fetchWithAxios(url) {
+  try {
+    const response = await axios.get(url);
+    console.log(response.data.data);
+    return response.data.data;
+  } catch (error) {
+    console.error("il y a une erreur", error);
+    throw error;
+  }
+}
+
 /**
  *
  * @returns {Promise} Promise object represents user data
  */
 async function getWelcomeTitleData() {
-  try {
-    const response = await axios.get(baseURL + currentUser);
-    return response.data;
-  } catch (error) {
-    console.error("il y a une erreur", error);
-    throw error;
-  }
+  console.log(currentUser);
+  // console.log("getWelcome",await findMockedData(getMockedUserById(12)))
+  return !useMockedData
+    ? fetchWithAxios(baseURL + currentUser)
+    : getMockedUserById(+currentUser);
+  // {
+  //     data: getMockedUserById(12),
+  //   };
 }
 
 /**
@@ -33,13 +79,9 @@ async function getWelcomeTitleData() {
  * @returns {Promise} Promise object represents user data
  */
 async function getBarCharData() {
-  try {
-    const response = await axios.get(baseURL + currentUser + "/activity");
-    return response.data;
-  } catch (error) {
-    console.error("il y a une erreur", error);
-    throw error;
-  }
+  return !useMockedData
+    ? fetchWithAxios(baseURL + currentUser + "/activity")
+    : getMockedUserActivityById(+currentUser);
 }
 
 /**
@@ -47,13 +89,9 @@ async function getBarCharData() {
  * @returns {Promise} Promise object represents user data
  */
 async function getLineCharData() {
-  try {
-    const response = await axios.get(baseURL + currentUser + "/average-sessions");
-    return response.data;
-  } catch (error) {
-    console.error("il y a une erreur", error);
-    throw error;
-  }
+  return !useMockedData
+    ? fetchWithAxios(baseURL + currentUser + "/average-sessions")
+    : getMockedUserAverageSession(+currentUser);
 }
 
 /**
@@ -61,13 +99,9 @@ async function getLineCharData() {
  * @returns {Promise} Promise object represents user data
  */
 async function getRadarCharData() {
-  try {
-    const response = await axios.get(baseURL + currentUser + "/performance");
-    return response.data;
-  } catch (error) {
-    console.error("il y a une erreur", error);
-    throw error;
-  }
+  return !useMockedData
+    ? fetchWithAxios(baseURL + currentUser + "/performance")
+    : getMockedUserPerformance(+currentUser);
 }
 
 export {

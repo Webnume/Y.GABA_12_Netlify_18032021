@@ -19,7 +19,7 @@ const CardKeysInfos = () => {
     });
   }, []);
   if (!post) return  "Désolé il y'a une erreur";
-  const data = post.data;
+  const data = post;
 
   return (
     <section className="cardsKeysInfos">

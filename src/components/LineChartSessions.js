@@ -19,6 +19,7 @@ const LineChartSessions = () => {
 
   useEffect(() => {
     getLineCharData().then((response) => {
+      console.log(response);
       setPost(response);
     });
   }, []);
@@ -102,7 +103,7 @@ const LineChartSessions = () => {
     }
   }
 
-  const data = post.data.sessions;
+  const data = post.sessions;
   return (
     <section className="lineChartSession">
       <ResponsiveContainer>

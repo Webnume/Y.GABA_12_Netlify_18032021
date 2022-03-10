@@ -17,11 +17,12 @@ const RadarChartActivityType = () => {
 
   useEffect(() => {
     getRadarCharData().then((response) => {
+      console.log(response);
       setPost(response);
     });
   }, []);
   if (!post) return  "Désolé il y'a une erreur";
-  const data = post.data;
+  const data = post;
 
   /**
    * Reverse the input array
@@ -36,8 +37,8 @@ const RadarChartActivityType = () => {
     return ret;
   }
 
-  for (let i = 0; i < data.data.length; i++) {
-    const element = data.data[i];
+  for (let i = 0; i < post.data.length; i++) {
+    const element = post.data[i];
     switch (element.kind) {
       case 1:
         element.kind = "Cardio";
@@ -65,7 +66,7 @@ const RadarChartActivityType = () => {
   return (
     <section className="radarChartActivityType">
       <ResponsiveContainer>
-        <RadarChart outerRadius={70} data={reverseArr(data.data)} fill="white">
+        <RadarChart outerRadius={70} data={reverseArr(post.data)} fill="white">
           <PolarGrid radialLines={false} />
           <PolarAngleAxis style={{ fontSize: "12px" }} dataKey="kind" />
           <Radar

@@ -22,7 +22,7 @@ const RadialBarChartScore = () => {
   if (!post) return  "Désolé il y'a une erreur";
 
   const data = [];
-  data.push(post.data);
+  data.push(post);
 
   const renderLegend = () => {
     return (

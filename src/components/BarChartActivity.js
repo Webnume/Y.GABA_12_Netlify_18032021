@@ -47,7 +47,7 @@ const BarChartActivity = () => {
     return null;
   };
 
-  const data = post.data.sessions;
+  const data = post.sessions;
   const XAxisTickFormatter = (tick) => {
     const date = tick++;
     return date + 1;

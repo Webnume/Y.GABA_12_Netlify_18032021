@@ -20,7 +20,7 @@ const WelcomeTitle = () => {
       <h1>
         Bonjour{" "}
         <span style={{ color: "#ff0000" }}>
-          {post.data.userInfos.firstName}
+          {post.userInfos.firstName}
         </span>{" "}
       </h1>
       <h2>Félicitations ! Vous avez explosé vos objectifs hier 👏</h2>
