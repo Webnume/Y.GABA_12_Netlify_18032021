@@ -11,7 +11,9 @@ const Header = () => {
           <li>
             <img src={logo} className="logo" alt="logo" />
           </li>
-          <li><Link to="/"> Accueil</Link></li>
+          <li>
+            <Link to="/"> Accueil</Link>
+          </li>
           <li>Profil</li>
           <li>Réglage</li>
           <li>Communauté</li>
