@@ -16,14 +16,16 @@ import {
  */
 const LineChartSessions = () => {
   const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getLineCharData().then((response) => {
-      console.log(response);
       setPost(response);
+      setIsLoading(false);
     });
   }, []);
-  if (!post) return  "Désolé il y'a une erreur";
+  // if (!post) return  "Désolé il y'a une erreur";
 
   const renderLegend = (props) => {
     const { payload } = props;
@@ -103,9 +105,12 @@ const LineChartSessions = () => {
     }
   }
 
-  const data = post.sessions;
+  const data = post?.sessions;
   return (
     <section className="lineChartSession">
+    {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
       <ResponsiveContainer>
         <LineChart
           width={258}
@@ -133,6 +138,7 @@ const LineChartSessions = () => {
           />
         </LineChart>
       </ResponsiveContainer>
+      )}
     </section>
   );
 };

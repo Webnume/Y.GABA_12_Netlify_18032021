@@ -19,13 +19,16 @@ import { getBarCharData } from "../services/dataManager";
  */
 const BarChartActivity = () => {
   const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getBarCharData().then((response) => {
       setPost(response);
+      setIsLoading(false);
     });
   }, []);
-  if (!post) return "Désolé il y'a une erreur";
+  // if (!post) return "Désolé il y'a une erreur";
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -47,7 +50,7 @@ const BarChartActivity = () => {
     return null;
   };
 
-  const data = post.sessions;
+  const data = post?.sessions;
   const XAxisTickFormatter = (tick) => {
     const date = tick++;
     return date + 1;
@@ -87,6 +90,9 @@ const BarChartActivity = () => {
 
   return (
     <section className="barChartActivity">
+    {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
       <ResponsiveContainer
         width="100%"
         height="100%"
@@ -112,6 +118,7 @@ const BarChartActivity = () => {
           />
         </BarChart>
       </ResponsiveContainer>
+      )}
     </section>
   );
 };

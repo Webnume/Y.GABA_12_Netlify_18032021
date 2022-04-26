@@ -13,13 +13,16 @@ import {
  */
 const RadialBarChartScore = () => {
   const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getWelcomeTitleData().then((response) => {
       setPost(response);
+      setIsLoading(false);
     });
   }, []);
-  if (!post) return  "Désolé il y'a une erreur";
+  // if (!post) return  "Désolé il y'a une erreur";
 
   const data = [];
   data.push(post);
@@ -91,6 +94,10 @@ const RadialBarChartScore = () => {
 
   return (
     <section className="radialBarChartScore">
+    
+    {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           width={730}
@@ -99,7 +106,7 @@ const RadialBarChartScore = () => {
           outerRadius="140%"
           data={data}
           startAngle={180}
-          endAngle={180 - pourcentageToDegree(data[0].score * 100)}
+          endAngle={180 - pourcentageToDegree(data[0]?.score * 100)}
         >
           <RadialBar
             minAngle={15}
@@ -124,6 +131,7 @@ const RadialBarChartScore = () => {
           />
         </RadialBarChart>
       </ResponsiveContainer>
+      )}
     </section>
   );
 };
