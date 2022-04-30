@@ -30,7 +30,7 @@ nav ul {
   margin: 0;
 }
 nav ul li {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .logo {
@@ -57,7 +57,7 @@ nav ul li {
   width: 64px;
   height: 64px;
   margin: 1rem;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .copyright {
